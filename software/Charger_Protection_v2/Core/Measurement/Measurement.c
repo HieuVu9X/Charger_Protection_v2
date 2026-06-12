@@ -45,26 +45,28 @@ static RmsAccumulator_t ILeakAcc;
 static uint32_t TempSum;
 static uint32_t TempCount;
 
-//static float rmsVacIn;
-//static float rmsVacOut;
-//
-//static float rmsIac;
-//static float rmsILeak;
-//
-//static float tempAvg;
 /*--------------------------------------------------------------------------------
  *                           Static Function Prototypes
  -------------------------------------------------------------------------------*/
-static void ADC_Process(void);
-static float ADC_CountToVolt(float adcCount);
-static float ADC_CalculateRms(uint8_t channel);
-static float ADC_GetAverage(uint8_t channel);
+static void RMS_Reset(RmsAccumulator_t *acc);
+static void RMS_Update(RmsAccumulator_t *acc, float sample);
+static float RMS_GetValue(RmsAccumulator_t *acc);
+static void ADC_ProcessBlock(const uint16_t *buffer);
+static void ADC_UpdateMeasurement(void);
 /*--------------------------------------------------------------------------------
  *                           Public Function Definitions
  -------------------------------------------------------------------------------*/
 void MeasurementInit(void)
 {
     memset(g_AdcBuffer, 0, sizeof(g_AdcBuffer));
+
+    RMS_Reset(&VacInAcc);
+    RMS_Reset(&VacOutAcc);
+    RMS_Reset(&IacAcc);
+    RMS_Reset(&ILeakAcc);
+
+    TempSum = 0u;
+    TempCount = 0u;
 
     HAL_ADC_Start_DMA(&hadc, (uint32_t*)g_AdcBuffer, ADC_DMA_BUFFER_SIZE);
 }
@@ -88,82 +90,132 @@ void Measurement_MainFunction(void)
 	MeasureResult.Temp 				= (tempAvg * 100.0f) / 4095.0f;;
 }
 
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc)
 {
-    ADC_Process();
+    ADC_ProcessBlock(&g_AdcBuffer[0]);
+    ADC_UpdateMeasurement();
 }
 
-
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
+    ADC_ProcessBlock(&g_AdcBuffer[SAMPLE_PER_HALF * ADC_CHANNEL_NUM]);
+    ADC_UpdateMeasurement();
+}
 
 /*--------------------------------------------------------------------------------
  *                           Static Function Definitions
  -------------------------------------------------------------------------------*/
-/*
- * Call every DMA Complete callback.
- */
-static void ADC_Process(void)
+static void RMS_Reset(RmsAccumulator_t *acc)
 {
-	rmsVacIn  	= ADC_CalculateRms(ADC_CH_VAC_IN);
-	rmsVacOut  	= ADC_CalculateRms(ADC_CH_VAC_OUT);
-
-    rmsIac   	= ADC_CalculateRms(ADC_CH_IAC);
-    rmsILeak 	= ADC_CalculateRms(ADC_CH_ILEAK);
-
-    tempAvg  	= ADC_GetAverage(ADC_CH_TEMP);
+    acc->Sum = 0.0f;
+    acc->SumSquare = 0.0f;
+    acc->SampleCount = 0u;
 }
 
-static float ADC_CountToVolt(float adcCount)
+static void RMS_Update(RmsAccumulator_t *acc, float sample)
 {
-    return (adcCount * 3.3f) / 4095.0f;
+    acc->Sum += sample;
+
+    acc->SumSquare += sample * sample;
+
+    acc->SampleCount++;
 }
 
-/*
- * RMS calculation with DC offset removal.
- */
-static float ADC_CalculateRms(uint8_t channel)
+static float RMS_GetValue(RmsAccumulator_t *acc)
 {
-    uint32_t sample;
+    float mean;
+    float meanSquare;
+    float rms;
 
-    float mean = 0.0f;
-    float rms  = 0.0f;
-
-    for(sample = 0; sample < ADC_SAMPLE_PER_CHANNEL; sample++)
+    if(acc->SampleCount == 0u)
     {
-        mean += (float)g_AdcBuffer[sample * ADC_CHANNEL_NUM + channel];
+        return 0.0f;
     }
 
-    mean /= (float)ADC_SAMPLE_PER_CHANNEL;
+    mean = acc->Sum / (float)acc->SampleCount;
 
-    for(sample = 0; sample < ADC_SAMPLE_PER_CHANNEL; sample++)
+    meanSquare = acc->SumSquare / (float)acc->SampleCount;
+
+    rms = meanSquare - (mean * mean);
+
+    if(rms < 0.0f)
     {
-        float x;
-
-        x = (float)g_AdcBuffer[sample * ADC_CHANNEL_NUM + channel];
-
-        x -= mean;
-
-        rms += (x * x);
+        rms = 0.0f;
     }
-
-    rms /= (float)ADC_SAMPLE_PER_CHANNEL;
 
     return sqrtf(rms);
 }
 
-static float ADC_GetAverage(uint8_t channel)
+static void ADC_ProcessBlock(const uint16_t *buffer)
 {
-    uint32_t sample;
-    float avg = 0.0f;
+    uint32_t i;
 
-    for(sample = 0; sample < ADC_SAMPLE_PER_CHANNEL; sample++)
+    for(i = 0; i < SAMPLE_PER_HALF; i++)
     {
-        avg += (float)g_AdcBuffer[sample * ADC_CHANNEL_NUM + channel];
+        uint16_t vacIn;
+        uint16_t vacOut;
+        uint16_t iac;
+        uint16_t ileak;
+        uint16_t temp;
+
+        vacIn 	= buffer[i * ADC_CHANNEL_NUM + ADC_CH_VAC_IN];
+        vacOut 	= buffer[i * ADC_CHANNEL_NUM + ADC_CH_VAC_OUT];
+        iac 	= buffer[i * ADC_CHANNEL_NUM + ADC_CH_IAC];
+        ileak 	= buffer[i * ADC_CHANNEL_NUM + ADC_CH_ILEAK];
+        temp 	= buffer[i * ADC_CHANNEL_NUM + ADC_CH_TEMP];
+
+        RMS_Update(&VacInAcc, (float)vacIn);
+        RMS_Update(&VacOutAcc, (float)vacOut);
+        RMS_Update(&IacAcc, (float)iac);
+        RMS_Update(&ILeakAcc, (float)ileak);
+        TempSum += temp;
+        TempCount++;
+    }
+}
+
+static void ADC_UpdateMeasurement(void)
+{
+    if(VacInAcc.SampleCount <
+       RMS_WINDOW_SAMPLES)
+    {
+        return;
     }
 
-    avg /= (float)ADC_SAMPLE_PER_CHANNEL;
+    /*
+     * NOTE:
+     * Current values are RMS in ADC counts.
+     *
+     * Add HW scale factors here:
+     *
+     * VacRms = RMS_GetValue(...) * VAC_GAIN
+     * IacRms = RMS_GetValue(...) * IAC_GAIN
+     */
 
-    return avg;
+    g_Measurement.AcInputVoltageRms  = RMS_GetValue(&VacInAcc);
+    g_Measurement.AcOutputVoltageRms = RMS_GetValue(&VacOutAcc);
+    g_Measurement.AcCurrentRms 		 = RMS_GetValue(&IacAcc);
+    g_Measurement.LeakageCurrentRms  = RMS_GetValue(&ILeakAcc);
+
+    if(TempCount > 0u)
+    {
+        /*
+         * Example:
+         * 0~100°C -> 0~4095 ADC
+         *
+         * Replace with actual sensor equation.
+         */
+        g_Measurement.ModuleTempDegC = ((float)TempSum / (float)TempCount) * 100.0f / 4095.0f;
+    }
+
+    RMS_Reset(&VacInAcc);
+    RMS_Reset(&VacOutAcc);
+    RMS_Reset(&IacAcc);
+    RMS_Reset(&ILeakAcc);
+
+    TempSum = 0u;
+    TempCount = 0u;
 }
+
 
 
 
