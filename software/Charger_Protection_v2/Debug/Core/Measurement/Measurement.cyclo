@@ -1,7 +1,0 @@
-../Core/Measurement/Measurement.c:50:6:MeasurementInit	1
-../Core/Measurement/Measurement.c:57:6:Measurement_MainFunction	1
-../Core/Measurement/Measurement.c:76:6:HAL_ADC_ConvCpltCallback	1
-../Core/Measurement/Measurement.c:89:13:ADC_Process	1
-../Core/Measurement/Measurement.c:100:14:ADC_CountToVolt	1
-../Core/Measurement/Measurement.c:108:14:ADC_CalculateRms	3
-../Core/Measurement/Measurement.c:138:14:ADC_GetAverage	2
