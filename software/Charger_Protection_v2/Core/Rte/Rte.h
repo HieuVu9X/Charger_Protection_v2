@@ -11,7 +11,7 @@
 /*--------------------------------------------------------------------------------
  *                                 Include Files
  -------------------------------------------------------------------------------*/
-
+#include "stdint.h"
 /*--------------------------------------------------------------------------------
  *                               Macro Definitions
  -------------------------------------------------------------------------------*/
@@ -19,15 +19,30 @@
 /*--------------------------------------------------------------------------------
  *                                Type Definitions
  -------------------------------------------------------------------------------*/
-typedef struct
-{
-	float AcInVoltage;
-	float AcOutVoltage;
+typedef struct {
+	// AC Input Channel
+	float V_in_rms;
+	float I_in_rms;
+	float P_in_active;
+	float S_in_apparent;
+	float PowerFactor_in;
+	float Frequency_in;
 
-	float AcCurrent;
-	float LeakageCurruent;
+	// AC Output Channel (Removed Frequency_out)
+	float V_out_rms;
 
-	float Temp;
+	// Leakage Current & Temperature
+	float I_leak_rms;
+	float Temperature;
+
+	// System Monitoring (Hardware circuit DC Offsets)
+	float V_in_DC_Offset;
+	float V_out_DC_Offset;
+	float I_in_DC_Offset;
+	float I_leak_DC_Offset;
+
+	// Emergency fault flag for leakage current (0: OK, 1: TRIP)
+	volatile uint8_t leakage_trip_flag;
 } MeasureResult_t;
 /*--------------------------------------------------------------------------------
  *                              Variable Definitions

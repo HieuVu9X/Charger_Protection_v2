@@ -1,0 +1,5 @@
+../Core/Measurement/Measurement.c:151:20:Process_Buffer_Segment.constprop	232	static
+../Core/Measurement/Measurement.c:80:6:MeasurementInit	8	static
+../Core/Measurement/Measurement.c:87:6:Measurement_MainFunction	32	static
+../Core/Measurement/Measurement.c:131:6:HAL_ADC_ConvHalfCpltCallback	8	static
+../Core/Measurement/Measurement.c:139:6:HAL_ADC_ConvCpltCallback	8	static
