@@ -35,18 +35,25 @@
 /* Entry Point */
 ENTRY(Reset_Handler)
 
+/* Root this debugger/future UART API before LTO removes unreferenced code. */
+EXTERN(Calib_Save)
+
 /* Highest address of the user mode stack */
 _estack = ORIGIN(RAM) + LENGTH(RAM); /* end of "RAM" Ram type memory */
 
-_Min_Heap_Size = 0x200; /* required amount of heap */
-_Min_Stack_Size = 0x400; /* required amount of stack */
+_Min_Heap_Size = 0x150; /* required amount of heap */
+_Min_Stack_Size = 0x300; /* required amount of stack */
 
 /* Memories definition */
 MEMORY
 {
   RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 4K
-  FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 16K
+  FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 15K
+  CALIB (r) : ORIGIN = 0x8003C00,   LENGTH = 1K
 }
+
+__calib_start__ = ORIGIN(CALIB);
+__calib_end__ = ORIGIN(CALIB) + LENGTH(CALIB);
 
 /* Sections */
 SECTIONS
@@ -64,6 +71,9 @@ SECTIONS
   {
     . = ALIGN(4);
     *(.text)           /* .text sections (code) */
+    /* Retain the save API for debugger/future UART callers and count its
+     * real code footprint even before the UART command parser is added. */
+    KEEP(*(.text.Calib_Save))
     *(.text*)          /* .text* sections (code) */
     *(.glue_7)         /* glue arm to thumb code */
     *(.glue_7t)        /* glue thumb to arm code */

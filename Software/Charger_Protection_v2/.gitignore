@@ -1,0 +1,5 @@
+Tools/.python/
+Tools/build/
+Tools/*.spec
+__pycache__/
+*.pyc

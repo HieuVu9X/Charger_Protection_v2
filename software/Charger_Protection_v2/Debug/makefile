@@ -15,6 +15,8 @@ RM := rm -rf
 -include Core/Rte/subdir.mk
 -include Core/Protection/subdir.mk
 -include Core/Measurement/subdir.mk
+-include Core/Com/subdir.mk
+-include Core/Calib/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -64,7 +66,7 @@ main-build: Charger_Protection_v2.elf secondary-outputs
 
 # Tool invocations
 Charger_Protection_v2.elf Charger_Protection_v2.map: $(OBJS) $(USER_OBJS) C:\Users\Admin\OneDrive\Desktop\hieuvm\14.\ Charger_Protection_v2\Charger_Protection_v2\software\Charger_Protection_v2\STM32F030F4PX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Charger_Protection_v2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\Admin\OneDrive\Desktop\hieuvm\14. Charger_Protection_v2\Charger_Protection_v2\software\Charger_Protection_v2\STM32F030F4PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Charger_Protection_v2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "Charger_Protection_v2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\Admin\OneDrive\Desktop\hieuvm\14. Charger_Protection_v2\Charger_Protection_v2\software\Charger_Protection_v2\STM32F030F4PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Charger_Protection_v2.map" -Wl,--gc-sections -static -flto -fstack-usage -fcyclomatic-complexity --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -1,0 +1,156 @@
+/* Reuse the independent analog generator and hardware stubs, and execute both
+ * production modules together. The regression main is compiled but not run. */
+#define main measurement_regression_main
+#define RTE_INTEGRATION_TEST
+#include "measurement_host_test.c"
+#undef main
+#include "Protection.c"
+#include "scheduler.c"
+
+#if PROTECTION_MODE == PROTECTION_MODE_DEBUG
+#define TestInput MeasureResult_test
+#else
+#define TestInput MeasureResult
+#endif
+
+unsigned mock_pins[4], mock_primask, mock_systick_enabled;
+unsigned mock_trip_on_unmask;
+void mock_restore_primask(uint32_t value) { mock_primask = value; }
+
+static void post_dma(void)
+{
+    Scheduler_Tick1msISR(); /* One DMA half-buffer = 1 ms in this simulation. */
+}
+
+/* Same direct call order as the production ADC1 DMA1 channel 1 ISR. */
+static void adc_dma_irq(void)
+{
+    Measurement_DMA_IRQHandler();
+    Protection_FastLeakageISR();
+}
+
+static void boot_system(void)
+{
+    reset_measurement();
+    mock_primask=0;
+    ProtectionInit();
+    MeasurementInit();
+    Scheduler_Init();
+    /* Only DEBUG injects a separate input; RELEASE waits for real ADC results. */
+#if PROTECTION_MODE == PROTECTION_MODE_DEBUG
+    memset((void *)&TestInput,0,sizeof(TestInput));
+    TestInput.V_in_rms=TestInput.V_out_rms=220;
+    TestInput.I_in_rms=1; TestInput.Temperature=25;
+    TestInput.startup_complete=1;
+    TestInput.fast_leakage_ready=1;
+#endif
+    mock_dma_dispatch_hook=adc_dma_irq;
+    mock_post_dma_hook=post_dma;
+    mock_post_main_hook=Scheduler_MainFunction;
+    feed(6000,50,220,1,0,0,25,0,0,0,0,1);
+    check(mock_pins[0]==1 && mock_pins[1]==1,"integrated healthy system enables relays");
+    check(mock_pins[2]==1 && mock_pins[3]==0,"healthy LED is steady and buzzer silent");
+}
+
+int main(void)
+{
+#if PROTECTION_MODE == PROTECTION_MODE_RELEASE
+    reset_measurement();
+    ProtectionInit();
+    Scheduler_Init();
+    mock_dma_dispatch_hook=adc_dma_irq;
+    mock_post_dma_hook=post_dma;
+    mock_post_main_hook=Scheduler_MainFunction;
+    feed(1000,50,220,1,0,0,25,0,0,0,0,1);
+    channel_bias[ADC_CH_ILEAK]=6.0*ADC_LSB_V;
+    feed(1000,50,220,1,0,0,25,0,0,0,0,1);
+    check(MeasureResult.startup_complete && !MeasureResult.fast_leakage_ready,
+          "RMS publication does not falsely qualify a moving fast baseline");
+    check(!mock_pins[0] && !mock_pins[1] && Protection_GetFaultMask()==0,
+          "actual healthy RMS cannot close relays before fast baseline is stable");
+    feed(2000,50,220,1,0,0,25,0,0,0,0,1);
+    check(MeasureResult.fast_leakage_ready && mock_pins[0] && mock_pins[1],
+          "actual stable baseline permits relay enable without resetting RMS");
+    boot_system();
+    uint16_t candidate[50];
+    uint16_t baseline=(uint16_t)(leakage_offset_q19/LEAK_OFFSET_SCALE);
+    fill_leak_scans(candidate,baseline);
+    for(unsigned j=5;j<10;j++) candidate[j*5+ADC_CH_ILEAK]=baseline+12;
+    process_half(candidate,1);
+    check(leakage_over_count==3 && !MeasureResult.leakage_trip_flag &&
+          Protection_GetFaultMask()==0 && mock_pins[0] && mock_pins[1],
+          "three real filtered exceedances do not request a relay trip");
+    feed_leak_dc((uint16_t)(baseline+12),(MEASUREMENT_LEAK_FAST_CONFIRM_SAMPLES-3U+9U)/10U,1);
+    check(MeasureResult.leakage_trip_flag && Protection_GetFaultMask()==PROTECTION_FAULT_LEAK &&
+          FastLeakTrip.sample_index==6000+MEASUREMENT_LEAK_FAST_CONFIRM_SAMPLES+6,
+          "actual twentieth ADC exceedance drives Protection fast ISR across DMA boundaries");
+#endif
+    boot_system();
+    TestInput.I_in_rms=2.8f;
+    Protection_MainFunction();
+    check(Protection_IsTripPending() && mock_pins[0] && mock_pins[1],
+        "integrated OC waits while relays remain energized");
+    check(mock_pins[2]==1 && mock_pins[3]==1,"audible alarm starts while waiting for crossing");
+    feed(150,50,220,1,0,0,25,0,0,0,0,1);
+    check(!Protection_IsTripPending() && !mock_pins[0] && !mock_pins[1],
+        "actual measurement callback opens both relays");
+    check(Protection_GetFaultMask()==PROTECTION_FAULT_OC,"integrated OC fault remains latched");
+    feed(1000,50,220,1,0,0,25,0,0,0,0,1);
+    check(!mock_pins[0] && !mock_pins[1],"healthy measurements cannot reclose after synchronized trip");
+    for(unsigned ms=0;ms<1000U;ms++)
+    {
+        Scheduler_Tick1msISR();
+        Scheduler_MainFunction();
+        check(mock_pins[2]==mock_pins[3],"scheduler keeps LED and buzzer in phase");
+    }
+
+    boot_system();
+    TestInput.leakage_trip_flag=1;
+    feed(150,50,220,1,0,0.050,25,0,0,0,0,1);
+    check(Protection_GetFaultMask()==PROTECTION_FAULT_LEAK,
+        "test leakage flag takes fast path without waiting for RMS window");
+    check(!mock_pins[0] && !mock_pins[1],"fast leakage opens at subsequent real Vin crossing");
+
+    boot_system();
+    TestInput.Temperature=70.0f;
+    Protection_MainFunction();
+    for(unsigned ms=0;ms<29;ms++) Scheduler_Tick1msISR();
+    check(mock_pins[0] && mock_pins[1],"stopped ADC leaves trip pending before deadline");
+    Scheduler_Tick1msISR();
+    check(!mock_pins[0] && !mock_pins[1],"timeout opens relays even without further ADC data");
+    boot_system();
+    TestInput.V_in_rms=300; Protection_MainFunction();
+    feed(150,50,220,1,0,0,25,0,0,0,0,1);
+    check(!mock_pins[0] && !mock_pins[1],"recoverable OV opens through real ADC zero crossing");
+    TestInput.V_in_rms=220; Protection_MainFunction();
+    feed(9990,50,220,1,0,0,25,0,0,0,0,1);
+    check(Protection_GetFaultMask()==PROTECTION_FAULT_OV_IN && !mock_pins[0],"scheduler holds OV trip for 999 ticks");
+    feed(10,50,220,1,0,0,25,0,0,0,0,1);
+    check(Protection_GetFaultMask()==0 && mock_pins[0] && mock_pins[1],"scheduler recovers both relays at 1000 ticks");
+    check(mock_pins[2] && !mock_pins[3],"recovery restores steady LED and silent buzzer");
+    boot_system();
+    TestInput.V_in_rms=190; Protection_MainFunction();
+    feed(150,50,190,1,0,0,25,0,0,0,0,1);
+    check(Protection_GetFaultMask()==PROTECTION_FAULT_UV_IN && !mock_pins[0] && !mock_pins[1],
+        "Vin UV uses actual measurement zero-crossing callback");
+    /* Inject the exact boundary once; 202 V analog input stays above 200 V
+     * after the production filter attenuation/quantization in RELEASE. */
+    TestInput.V_in_rms=200; Protection_MainFunction();
+    feed(9990,50,202,1,0,0,25,0,0,0,0,1);
+    check(Protection_GetFaultMask()==PROTECTION_FAULT_UV_IN && !mock_pins[0],
+        "Vin UV holds relays off for 999 ticks at the recovery threshold");
+    feed(10,50,202,1,0,0,25,0,0,0,0,1);
+    check(Protection_GetFaultMask()==0 && mock_pins[0] && mock_pins[1],
+        "Vin UV recovers through scheduler after full hold with valid recovered voltage");
+    boot_system();
+    mock_te=1;
+    adc_dma_irq();
+    check(mock_errors==1 && !mock_timer_running && !mock_dma_running,
+        "fatal DMA error stops acquisition");
+    /* Production Error_Handler invokes this before disabling all interrupts. */
+    Rte_Call_Protection_EmergencyStop();
+    check(!mock_pins[0] && !mock_pins[1] && !Protection_IsTripPending(),
+        "fatal error opens immediately without relying on a future tick");
+    printf("Integration: %u checks, %u failures\n",checks,failures);
+    return failures?1:0;
+}

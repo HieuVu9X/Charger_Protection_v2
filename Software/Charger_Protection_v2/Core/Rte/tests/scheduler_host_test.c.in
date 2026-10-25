@@ -1,0 +1,139 @@
+#include "Scheduler.h"
+#include <assert.h>
+#include <stdint.h>
+#include <stdio.h>
+
+uint32_t mock_primask;
+static unsigned checks, systick_enabled, protection_ticks;
+static unsigned measurement_calls, protection_calls, task10_calls, task100_calls;
+static unsigned inject_tick_on_unmask, inject_tick_in_task;
+static char order[16];
+static unsigned order_length;
+#define CHECK(expr) do { ++checks; assert(expr); } while (0)
+
+static void record(char task)
+{
+    if (order_length < sizeof(order)) order[order_length++] = task;
+}
+void LL_SYSTICK_EnableIT(void) { systick_enabled = 1U; }
+void mock_restore_primask(uint32_t value)
+{
+    mock_primask = value;
+    if (value == 0U && inject_tick_on_unmask)
+    {
+        inject_tick_on_unmask = 0U;
+        Scheduler_Tick1msISR();
+    }
+}
+void Protection_Tick1msISR(void) { ++protection_ticks; }
+void Measurement_MainFunction(void)
+{
+    CHECK(mock_primask == 0U);
+    ++measurement_calls;
+    record('M');
+    if (inject_tick_in_task)
+    {
+        inject_tick_in_task = 0U;
+        Scheduler_Tick1msISR();
+    }
+}
+void Protection_MainFunction(void)
+{
+    CHECK(mock_primask == 0U);
+    ++protection_calls;
+    record('P');
+}
+/* Strong overrides also verify the documented extension mechanism. */
+void Scheduler_Task10ms(void)
+{
+    CHECK(mock_primask == 0U);
+    ++task10_calls;
+    record('T');
+}
+void Scheduler_Task100ms(void)
+{
+    CHECK(mock_primask == 0U);
+    ++task100_calls;
+    record('H');
+}
+static void reset(void)
+{
+    mock_primask = 0U;
+    systick_enabled = protection_ticks = 0U;
+    measurement_calls = protection_calls = task10_calls = task100_calls = 0U;
+    inject_tick_on_unmask = inject_tick_in_task = order_length = 0U;
+    Scheduler_Init();
+}
+
+int main(void)
+{
+    reset();
+    CHECK(systick_enabled == 1U);
+    Scheduler_MainFunction();
+    CHECK(measurement_calls == 0U && task10_calls == 0U && task100_calls == 0U);
+    for (unsigned ms = 1U; ms <= 1000U; ++ms)
+    {
+        order_length = 0U;
+        Scheduler_Tick1msISR();
+        CHECK(protection_ticks == ms);
+        CHECK(measurement_calls == ms - 1U); /* No MainFunction in SysTick. */
+        Scheduler_MainFunction();
+        CHECK(measurement_calls == ms && protection_calls == ms);
+        CHECK(task10_calls == ms / 10U && task100_calls == ms / 100U);
+        CHECK(order[0] == 'M' && order[1] == 'P');
+        if (ms % 10U == 0U) CHECK(order[2] == 'T');
+        if (ms % 100U == 0U) CHECK(order[3] == 'H');
+        Scheduler_MainFunction();
+        CHECK(measurement_calls == ms); /* Ready bits consumed once. */
+    }
+
+    reset();
+    for (unsigned ms = 0; ms < 250U; ++ms) Scheduler_Tick1msISR();
+    CHECK(measurement_calls == 0U && protection_ticks == 250U);
+    Scheduler_MainFunction();
+    CHECK(measurement_calls == 1U && protection_calls == 1U);
+    CHECK(task10_calls == 1U && task100_calls == 1U); /* Coalesce missed releases. */
+    Scheduler_MainFunction();
+    CHECK(measurement_calls == 1U && task100_calls == 1U);
+    for (unsigned ms = 0; ms < 49U; ++ms) Scheduler_Tick1msISR();
+    Scheduler_MainFunction();
+    CHECK(task100_calls == 1U);
+    Scheduler_Tick1msISR();
+    Scheduler_MainFunction();
+    CHECK(task100_calls == 2U); /* Preserve phase: next 100 ms task at 300 ms. */
+
+    reset();
+    Scheduler_Tick1msISR();
+    inject_tick_in_task = 1U;
+    Scheduler_MainFunction();
+    CHECK(measurement_calls == 1U);
+    Scheduler_MainFunction();
+    CHECK(measurement_calls == 2U && protection_ticks == 2U);
+    Scheduler_MainFunction();
+    CHECK(measurement_calls == 2U);
+
+    reset();
+    inject_tick_on_unmask = 1U;
+    Scheduler_MainFunction();
+    CHECK(measurement_calls == 0U);
+    Scheduler_MainFunction();
+    CHECK(measurement_calls == 1U); /* Tick after snapshot cannot be lost. */
+
+    reset();
+    for (unsigned ms = 0; ms < 99U; ++ms) Scheduler_Tick1msISR();
+    Scheduler_Init();
+    Scheduler_MainFunction();
+    CHECK(measurement_calls == 0U && task100_calls == 0U);
+    Scheduler_Tick1msISR();
+    Scheduler_MainFunction();
+    CHECK(measurement_calls == 1U && task10_calls == 0U && task100_calls == 0U);
+
+    reset();
+    mock_primask = 1U;
+    Scheduler_Init();
+    CHECK(mock_primask == 1U);
+    Scheduler_MainFunction();
+    CHECK(mock_primask == 1U);
+    printf("Scheduler: %u checks passed\n", checks);
+    return 0;
+}

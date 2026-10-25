@@ -1,0 +1,42 @@
+#ifndef COM_TEST_MAIN_H
+#define COM_TEST_MAIN_H
+#include <stdint.h>
+#include <assert.h>
+typedef struct { uint32_t ISR, ICR; uint8_t input; } MockUsart;
+extern MockUsart mock_usart;
+extern int mock_txe, mock_irq, mock_in_isr;
+extern uint8_t mock_output[80];
+extern unsigned mock_output_length;
+#define USART1 (&mock_usart)
+#define USART1_IRQn 1
+#define USART_ISR_RXNE (1U<<0)
+#define USART_ISR_TXE (1U<<1)
+#define USART_ISR_TC (1U<<2)
+#define USART_ISR_ORE (1U<<3)
+#define USART_ISR_FE (1U<<4)
+#define USART_ISR_NE (1U<<5)
+#define USART_ISR_PE (1U<<6)
+#define USART_ICR_ORECF USART_ISR_ORE
+#define USART_ICR_FECF USART_ISR_FE
+#define USART_ICR_NCF USART_ISR_NE
+#define USART_ICR_PECF USART_ISR_PE
+static inline uint32_t __get_PRIMASK(void) { return (uint32_t)mock_irq; }
+static inline void __disable_irq(void) { mock_irq=1; }
+static inline void __set_PRIMASK(uint32_t x) { mock_irq=(int)x; }
+static inline void NVIC_SetPriority(int irq, unsigned p) { (void)irq; assert(p==0); }
+static inline void NVIC_EnableIRQ(int irq) { (void)irq; }
+static inline void LL_USART_DisableIT_TXE(MockUsart *u) { (void)u; mock_txe=0; }
+static inline void LL_USART_EnableIT_TXE(MockUsart *u) { (void)u; mock_txe=1; }
+static inline int LL_USART_IsEnabledIT_TXE(MockUsart *u) { (void)u; return mock_txe; }
+static inline int LL_USART_IsActiveFlag_RXNE(MockUsart *u) { return !!(u->ISR&USART_ISR_RXNE); }
+static inline int LL_USART_IsActiveFlag_TXE(MockUsart *u) { return !!(u->ISR&USART_ISR_TXE); }
+static inline int LL_USART_IsActiveFlag_TC(MockUsart *u) { return !!(u->ISR&USART_ISR_TC); }
+static inline void LL_USART_ClearFlag_TC(MockUsart *u) { u->ISR&=~USART_ISR_TC; }
+static inline uint8_t LL_USART_ReceiveData8(MockUsart *u) { u->ISR&=~USART_ISR_RXNE; return u->input; }
+static inline void LL_USART_TransmitData8(MockUsart *u,uint8_t b) {
+    assert(mock_in_isr && !mock_irq && mock_output_length<sizeof(mock_output));
+    mock_output[mock_output_length++]=b; u->ISR&=~USART_ISR_TC;
+}
+static inline void LL_USART_EnableIT_ERROR(MockUsart *u) { (void)u; }
+static inline void LL_USART_EnableIT_RXNE(MockUsart *u) { (void)u; }
+#endif

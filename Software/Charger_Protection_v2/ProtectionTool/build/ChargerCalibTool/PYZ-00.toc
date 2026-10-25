@@ -1,0 +1,790 @@
+('C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+ 'Charger_Protection_v2\\Charger_Protection_v2\\software\\Charger_Protection_v2\\ProtectionTool\\build\\ChargerCalibTool\\PYZ-00.pyz',
+ [('__future__',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\__future__.py',
+   'PYMODULE'),
+  ('_aix_support',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\_aix_support.py',
+   'PYMODULE'),
+  ('_colorize',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\_colorize.py',
+   'PYMODULE'),
+  ('_compat_pickle',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\_compat_pickle.py',
+   'PYMODULE'),
+  ('_compression',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\_compression.py',
+   'PYMODULE'),
+  ('_opcode_metadata',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\_opcode_metadata.py',
+   'PYMODULE'),
+  ('_py_abc',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\_py_abc.py',
+   'PYMODULE'),
+  ('_pydatetime',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\_pydatetime.py',
+   'PYMODULE'),
+  ('_pydecimal',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\_pydecimal.py',
+   'PYMODULE'),
+  ('_strptime',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\_strptime.py',
+   'PYMODULE'),
+  ('_threading_local',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\_threading_local.py',
+   'PYMODULE'),
+  ('argparse',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\argparse.py',
+   'PYMODULE'),
+  ('ast',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\ast.py',
+   'PYMODULE'),
+  ('base64',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\base64.py',
+   'PYMODULE'),
+  ('bisect',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\bisect.py',
+   'PYMODULE'),
+  ('bz2',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\bz2.py',
+   'PYMODULE'),
+  ('calendar',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\calendar.py',
+   'PYMODULE'),
+  ('concurrent',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\concurrent\\__init__.py',
+   'PYMODULE'),
+  ('concurrent.futures',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\concurrent\\futures\\__init__.py',
+   'PYMODULE'),
+  ('concurrent.futures._base',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\concurrent\\futures\\_base.py',
+   'PYMODULE'),
+  ('concurrent.futures.process',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\concurrent\\futures\\process.py',
+   'PYMODULE'),
+  ('concurrent.futures.thread',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\concurrent\\futures\\thread.py',
+   'PYMODULE'),
+  ('contextlib',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\contextlib.py',
+   'PYMODULE'),
+  ('contextvars',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\contextvars.py',
+   'PYMODULE'),
+  ('copy',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\copy.py',
+   'PYMODULE'),
+  ('csv',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\csv.py',
+   'PYMODULE'),
+  ('ctypes',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\ctypes\\__init__.py',
+   'PYMODULE'),
+  ('ctypes._endian',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\ctypes\\_endian.py',
+   'PYMODULE'),
+  ('ctypes.wintypes',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\ctypes\\wintypes.py',
+   'PYMODULE'),
+  ('dataclasses',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\dataclasses.py',
+   'PYMODULE'),
+  ('datetime',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\datetime.py',
+   'PYMODULE'),
+  ('decimal',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\decimal.py',
+   'PYMODULE'),
+  ('dis',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\dis.py',
+   'PYMODULE'),
+  ('email',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\__init__.py',
+   'PYMODULE'),
+  ('email._encoded_words',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\_encoded_words.py',
+   'PYMODULE'),
+  ('email._header_value_parser',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\_header_value_parser.py',
+   'PYMODULE'),
+  ('email._parseaddr',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\_parseaddr.py',
+   'PYMODULE'),
+  ('email._policybase',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\_policybase.py',
+   'PYMODULE'),
+  ('email.base64mime',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\base64mime.py',
+   'PYMODULE'),
+  ('email.charset',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\charset.py',
+   'PYMODULE'),
+  ('email.contentmanager',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\contentmanager.py',
+   'PYMODULE'),
+  ('email.encoders',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\encoders.py',
+   'PYMODULE'),
+  ('email.errors',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\errors.py',
+   'PYMODULE'),
+  ('email.feedparser',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\feedparser.py',
+   'PYMODULE'),
+  ('email.generator',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\generator.py',
+   'PYMODULE'),
+  ('email.header',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\header.py',
+   'PYMODULE'),
+  ('email.headerregistry',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\headerregistry.py',
+   'PYMODULE'),
+  ('email.iterators',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\iterators.py',
+   'PYMODULE'),
+  ('email.message',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\message.py',
+   'PYMODULE'),
+  ('email.parser',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\parser.py',
+   'PYMODULE'),
+  ('email.policy',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\policy.py',
+   'PYMODULE'),
+  ('email.quoprimime',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\quoprimime.py',
+   'PYMODULE'),
+  ('email.utils',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\email\\utils.py',
+   'PYMODULE'),
+  ('fnmatch',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\fnmatch.py',
+   'PYMODULE'),
+  ('fractions',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\fractions.py',
+   'PYMODULE'),
+  ('ftplib',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\ftplib.py',
+   'PYMODULE'),
+  ('getopt',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\getopt.py',
+   'PYMODULE'),
+  ('getpass',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\getpass.py',
+   'PYMODULE'),
+  ('gettext',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\gettext.py',
+   'PYMODULE'),
+  ('glob',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\glob.py',
+   'PYMODULE'),
+  ('gzip',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\gzip.py',
+   'PYMODULE'),
+  ('hashlib',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\hashlib.py',
+   'PYMODULE'),
+  ('hmac',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\hmac.py',
+   'PYMODULE'),
+  ('http',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\http\\__init__.py',
+   'PYMODULE'),
+  ('http.client',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\http\\client.py',
+   'PYMODULE'),
+  ('http.cookiejar',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\http\\cookiejar.py',
+   'PYMODULE'),
+  ('importlib',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\__init__.py',
+   'PYMODULE'),
+  ('importlib._abc',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\_abc.py',
+   'PYMODULE'),
+  ('importlib._bootstrap',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\_bootstrap.py',
+   'PYMODULE'),
+  ('importlib._bootstrap_external',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\_bootstrap_external.py',
+   'PYMODULE'),
+  ('importlib.abc',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\abc.py',
+   'PYMODULE'),
+  ('importlib.machinery',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\machinery.py',
+   'PYMODULE'),
+  ('importlib.metadata',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\metadata\\__init__.py',
+   'PYMODULE'),
+  ('importlib.metadata._adapters',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\metadata\\_adapters.py',
+   'PYMODULE'),
+  ('importlib.metadata._collections',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\metadata\\_collections.py',
+   'PYMODULE'),
+  ('importlib.metadata._functools',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\metadata\\_functools.py',
+   'PYMODULE'),
+  ('importlib.metadata._itertools',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\metadata\\_itertools.py',
+   'PYMODULE'),
+  ('importlib.metadata._meta',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\metadata\\_meta.py',
+   'PYMODULE'),
+  ('importlib.metadata._text',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\metadata\\_text.py',
+   'PYMODULE'),
+  ('importlib.readers',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\readers.py',
+   'PYMODULE'),
+  ('importlib.resources',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\resources\\__init__.py',
+   'PYMODULE'),
+  ('importlib.resources._adapters',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\resources\\_adapters.py',
+   'PYMODULE'),
+  ('importlib.resources._common',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\resources\\_common.py',
+   'PYMODULE'),
+  ('importlib.resources._functional',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\resources\\_functional.py',
+   'PYMODULE'),
+  ('importlib.resources._itertools',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\resources\\_itertools.py',
+   'PYMODULE'),
+  ('importlib.resources.abc',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\resources\\abc.py',
+   'PYMODULE'),
+  ('importlib.resources.readers',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\resources\\readers.py',
+   'PYMODULE'),
+  ('importlib.util',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\importlib\\util.py',
+   'PYMODULE'),
+  ('inspect',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\inspect.py',
+   'PYMODULE'),
+  ('ipaddress',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\ipaddress.py',
+   'PYMODULE'),
+  ('json',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\json\\__init__.py',
+   'PYMODULE'),
+  ('json.decoder',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\json\\decoder.py',
+   'PYMODULE'),
+  ('json.encoder',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\json\\encoder.py',
+   'PYMODULE'),
+  ('json.scanner',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\json\\scanner.py',
+   'PYMODULE'),
+  ('logging',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\logging\\__init__.py',
+   'PYMODULE'),
+  ('lzma',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\lzma.py',
+   'PYMODULE'),
+  ('mimetypes',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\mimetypes.py',
+   'PYMODULE'),
+  ('multiprocessing',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\__init__.py',
+   'PYMODULE'),
+  ('multiprocessing.connection',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\connection.py',
+   'PYMODULE'),
+  ('multiprocessing.context',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\context.py',
+   'PYMODULE'),
+  ('multiprocessing.dummy',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\dummy\\__init__.py',
+   'PYMODULE'),
+  ('multiprocessing.dummy.connection',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\dummy\\connection.py',
+   'PYMODULE'),
+  ('multiprocessing.forkserver',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\forkserver.py',
+   'PYMODULE'),
+  ('multiprocessing.heap',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\heap.py',
+   'PYMODULE'),
+  ('multiprocessing.managers',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\managers.py',
+   'PYMODULE'),
+  ('multiprocessing.pool',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\pool.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_fork',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\popen_fork.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_forkserver',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\popen_forkserver.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_spawn_posix',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\popen_spawn_posix.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_spawn_win32',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\popen_spawn_win32.py',
+   'PYMODULE'),
+  ('multiprocessing.process',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\process.py',
+   'PYMODULE'),
+  ('multiprocessing.queues',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\queues.py',
+   'PYMODULE'),
+  ('multiprocessing.reduction',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\reduction.py',
+   'PYMODULE'),
+  ('multiprocessing.resource_sharer',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\resource_sharer.py',
+   'PYMODULE'),
+  ('multiprocessing.resource_tracker',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\resource_tracker.py',
+   'PYMODULE'),
+  ('multiprocessing.shared_memory',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\shared_memory.py',
+   'PYMODULE'),
+  ('multiprocessing.sharedctypes',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\sharedctypes.py',
+   'PYMODULE'),
+  ('multiprocessing.spawn',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\spawn.py',
+   'PYMODULE'),
+  ('multiprocessing.synchronize',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\synchronize.py',
+   'PYMODULE'),
+  ('multiprocessing.util',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\multiprocessing\\util.py',
+   'PYMODULE'),
+  ('netrc',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\netrc.py',
+   'PYMODULE'),
+  ('nturl2path',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\nturl2path.py',
+   'PYMODULE'),
+  ('numbers',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\numbers.py',
+   'PYMODULE'),
+  ('opcode',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\opcode.py',
+   'PYMODULE'),
+  ('pathlib',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\pathlib\\__init__.py',
+   'PYMODULE'),
+  ('pathlib._abc',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\pathlib\\_abc.py',
+   'PYMODULE'),
+  ('pathlib._local',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\pathlib\\_local.py',
+   'PYMODULE'),
+  ('pickle',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\pickle.py',
+   'PYMODULE'),
+  ('pkgutil',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\pkgutil.py',
+   'PYMODULE'),
+  ('pprint',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\pprint.py',
+   'PYMODULE'),
+  ('protocol',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\software\\Charger_Protection_v2\\ProtectionTool\\protocol.py',
+   'PYMODULE'),
+  ('py_compile',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\py_compile.py',
+   'PYMODULE'),
+  ('queue',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\queue.py',
+   'PYMODULE'),
+  ('quopri',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\quopri.py',
+   'PYMODULE'),
+  ('random',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\random.py',
+   'PYMODULE'),
+  ('runpy',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\runpy.py',
+   'PYMODULE'),
+  ('secrets',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\secrets.py',
+   'PYMODULE'),
+  ('selectors',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\selectors.py',
+   'PYMODULE'),
+  ('serial',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\site-packages\\serial\\__init__.py',
+   'PYMODULE'),
+  ('serial.serialcli',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\site-packages\\serial\\serialcli.py',
+   'PYMODULE'),
+  ('serial.serialjava',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\site-packages\\serial\\serialjava.py',
+   'PYMODULE'),
+  ('serial.serialposix',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\site-packages\\serial\\serialposix.py',
+   'PYMODULE'),
+  ('serial.serialutil',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\site-packages\\serial\\serialutil.py',
+   'PYMODULE'),
+  ('serial.serialwin32',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\site-packages\\serial\\serialwin32.py',
+   'PYMODULE'),
+  ('serial.tools',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\site-packages\\serial\\tools\\__init__.py',
+   'PYMODULE'),
+  ('serial.tools.list_ports',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\site-packages\\serial\\tools\\list_ports.py',
+   'PYMODULE'),
+  ('serial.tools.list_ports_common',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\site-packages\\serial\\tools\\list_ports_common.py',
+   'PYMODULE'),
+  ('serial.tools.list_ports_linux',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\site-packages\\serial\\tools\\list_ports_linux.py',
+   'PYMODULE'),
+  ('serial.tools.list_ports_osx',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\site-packages\\serial\\tools\\list_ports_osx.py',
+   'PYMODULE'),
+  ('serial.tools.list_ports_posix',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\site-packages\\serial\\tools\\list_ports_posix.py',
+   'PYMODULE'),
+  ('serial.tools.list_ports_windows',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\site-packages\\serial\\tools\\list_ports_windows.py',
+   'PYMODULE'),
+  ('serial.win32',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\site-packages\\serial\\win32.py',
+   'PYMODULE'),
+  ('shutil',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\shutil.py',
+   'PYMODULE'),
+  ('signal',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\signal.py',
+   'PYMODULE'),
+  ('socket',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\socket.py',
+   'PYMODULE'),
+  ('ssl',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\ssl.py',
+   'PYMODULE'),
+  ('statistics',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\statistics.py',
+   'PYMODULE'),
+  ('string',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\string.py',
+   'PYMODULE'),
+  ('stringprep',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\stringprep.py',
+   'PYMODULE'),
+  ('subprocess',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\subprocess.py',
+   'PYMODULE'),
+  ('sysconfig',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\sysconfig\\__init__.py',
+   'PYMODULE'),
+  ('tarfile',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\tarfile.py',
+   'PYMODULE'),
+  ('tempfile',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\tempfile.py',
+   'PYMODULE'),
+  ('textwrap',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\textwrap.py',
+   'PYMODULE'),
+  ('threading',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\threading.py',
+   'PYMODULE'),
+  ('tkinter',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\tkinter\\__init__.py',
+   'PYMODULE'),
+  ('tkinter.commondialog',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\tkinter\\commondialog.py',
+   'PYMODULE'),
+  ('tkinter.constants',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\tkinter\\constants.py',
+   'PYMODULE'),
+  ('tkinter.dialog',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\tkinter\\dialog.py',
+   'PYMODULE'),
+  ('tkinter.filedialog',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\tkinter\\filedialog.py',
+   'PYMODULE'),
+  ('tkinter.messagebox',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\tkinter\\messagebox.py',
+   'PYMODULE'),
+  ('tkinter.simpledialog',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\tkinter\\simpledialog.py',
+   'PYMODULE'),
+  ('tkinter.ttk',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\tkinter\\ttk.py',
+   'PYMODULE'),
+  ('token',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\token.py',
+   'PYMODULE'),
+  ('tokenize',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\tokenize.py',
+   'PYMODULE'),
+  ('tracemalloc',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\tracemalloc.py',
+   'PYMODULE'),
+  ('typing',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\typing.py',
+   'PYMODULE'),
+  ('urllib',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\urllib\\__init__.py',
+   'PYMODULE'),
+  ('urllib.error',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\urllib\\error.py',
+   'PYMODULE'),
+  ('urllib.parse',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\urllib\\parse.py',
+   'PYMODULE'),
+  ('urllib.request',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\urllib\\request.py',
+   'PYMODULE'),
+  ('urllib.response',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\urllib\\response.py',
+   'PYMODULE'),
+  ('xml',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\xml\\__init__.py',
+   'PYMODULE'),
+  ('xml.parsers',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\xml\\parsers\\__init__.py',
+   'PYMODULE'),
+  ('xml.parsers.expat',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\xml\\parsers\\expat.py',
+   'PYMODULE'),
+  ('xml.sax',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\xml\\sax\\__init__.py',
+   'PYMODULE'),
+  ('xml.sax._exceptions',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\xml\\sax\\_exceptions.py',
+   'PYMODULE'),
+  ('xml.sax.expatreader',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\xml\\sax\\expatreader.py',
+   'PYMODULE'),
+  ('xml.sax.handler',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\xml\\sax\\handler.py',
+   'PYMODULE'),
+  ('xml.sax.saxutils',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\xml\\sax\\saxutils.py',
+   'PYMODULE'),
+  ('xml.sax.xmlreader',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\xml\\sax\\xmlreader.py',
+   'PYMODULE'),
+  ('xmlrpc',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\xmlrpc\\__init__.py',
+   'PYMODULE'),
+  ('xmlrpc.client',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\xmlrpc\\client.py',
+   'PYMODULE'),
+  ('zipfile',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\zipfile\\__init__.py',
+   'PYMODULE'),
+  ('zipfile._path',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\zipfile\\_path\\__init__.py',
+   'PYMODULE'),
+  ('zipfile._path.glob',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\zipfile\\_path\\glob.py',
+   'PYMODULE'),
+  ('zipimport',
+   'C:\\Users\\Admin\\OneDrive\\Desktop\\hieuvm\\14. '
+   'Charger_Protection_v2\\Charger_Protection_v2\\Tools_Calib\\.python\\Lib\\zipimport.py',
+   'PYMODULE')])
