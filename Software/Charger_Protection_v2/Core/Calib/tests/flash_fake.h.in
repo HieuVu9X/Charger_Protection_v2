@@ -1,8 +1,0 @@
-#ifndef FLASH_FAKE_H_
-#define FLASH_FAKE_H_
-#include "CalibFlash.h"
-extern uint32_t fake_flash[CALIB_PAGE_COUNT][CALIB_PAGE_SIZE / sizeof(uint32_t)];
-extern int fake_fail_after, fake_busy, fake_corrupt_body;
-extern unsigned fake_erases, fake_programs, fake_service;
-void FakeFlash_Reset(void);
-#endif
