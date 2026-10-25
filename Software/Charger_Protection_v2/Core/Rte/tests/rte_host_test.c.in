@@ -1,0 +1,46 @@
+#include "Rte.h"
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+
+#if !defined(Rte_Call_Protection_Tick1msISR) || \
+    !defined(Rte_Call_Measurement_ZeroCross) || \
+    !defined(Rte_Call_Protection_EmergencyStop) || \
+    !defined(Rte_Call_Calib_Get) || \
+    !defined(Rte_Call_Application_ErrorHandler)
+#error "RTE call ports must be preprocessor macro mappings"
+#endif
+
+static char calls[32];
+static unsigned used, checks;
+#define CHECK(expr) do { ++checks; assert(expr); } while (0)
+static void record(char value) { assert(used < sizeof(calls)-1); calls[used++] = value; }
+void Protection_Tick1msISR(void) { record('T'); }
+void Protection_ZeroCrossISR(void) { record('Z'); }
+void Protection_EmergencyStop(void) { record('S'); }
+static const CalibParams_t calib = {1.01f, 0.99f, 1.02f, 1.1f, -1.5f};
+const CalibParams_t *Calib_Get(void) { record('C'); return &calib; }
+void Error_Handler(void) { record('E'); }
+
+static void expect(const char *expected)
+{
+    calls[used] = '\0';
+    CHECK(strcmp(calls, expected) == 0);
+    used = 0;
+}
+
+int main(void)
+{
+    Rte_Call_Protection_Tick1msISR();
+    expect("T");
+    Rte_Call_Measurement_ZeroCross();
+    expect("Z"); /* Synchronous: provider runs before required port returns. */
+    Rte_Call_Protection_EmergencyStop();
+    expect("S");
+    CHECK(Rte_Call_Calib_Get() == &calib);
+    expect("C");
+    Rte_Call_Application_ErrorHandler();
+    expect("E");
+    printf("RTE routing: %u checks passed\n", checks);
+    return 0;
+}

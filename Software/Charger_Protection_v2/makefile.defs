@@ -1,0 +1,11 @@
+# CubeIDE will discover scheduler.c when regenerating its managed makefiles.
+# Include it in the existing CLI builds too, until that regeneration happens.
+# The guard prevents linking the object twice after IDE regeneration.
+ifeq ($(filter ./Core/Rte/scheduler.o,$(OBJS)),)
+USER_OBJS += ./Core/Rte/scheduler.o
+ifneq ($(MAKECMDGOALS),clean)
+-include Core/Rte/scheduler.d
+endif
+endif
+
+

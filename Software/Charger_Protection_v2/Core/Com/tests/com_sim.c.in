@@ -1,0 +1,80 @@
+/* Executed by Tools/tests/test_protocol.py; links production com, Calib, Rte.
+ * USART registers, time, reset and the physical Flash port are test doubles. */
+#include "main.h"
+#include "Rte.h"
+#include "flash_fake.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+MockUsart mock_usart;
+int mock_txe, mock_irq, mock_in_isr;
+uint8_t mock_output[80];
+unsigned mock_output_length;
+static uint32_t now_ms;
+static unsigned resets;
+
+uint32_t Scheduler_GetTimeMs(void) { assert(!mock_in_isr); return now_ms; }
+uint32_t Protection_GetFaultMask(void) { assert(!mock_in_isr); return 0x41U; }
+void Application_Reset(void) {
+    assert(!mock_in_isr && !mock_irq && LL_USART_IsActiveFlag_TC(USART1));
+    resets++; Calib_Init(); Com_Init();
+}
+static void Irq(void) {
+    assert(!mock_irq); mock_in_isr=1;
+    Com_UART_IRQHandler(); mock_in_isr=0;
+}
+static void Input(const char *hex) {
+    while (*hex) {
+        char *end; unsigned long byte=strtoul(hex,&end,16);
+        if (hex==end) break;
+        /* Tokens are two hex chars, separated by spaces by the Python harness. */
+        assert(byte<=255); mock_usart.input=(uint8_t)byte;
+        mock_usart.ISR|=USART_ISR_RXNE; Irq(); hex=end;
+    }
+}
+static void Drain(void) {
+    unsigned guard=0;
+    while (mock_txe) { assert(++guard<=80); Irq(); }
+}
+int main(void) {
+    char line[2048];
+    FakeFlash_Reset(); Calib_Init();
+    mock_usart.ISR=USART_ISR_TXE|USART_ISR_TC; Com_Init();
+    MeasureResult=(MeasureResult_t){
+        .V_in_rms=220.0f,.I_in_rms=1.5f,.P_in_active=300.0f,
+        .S_in_apparent=330.0f,.PowerFactor_in=0.91f,.Frequency_in=50.0f,
+        .V_out_rms=219.0f,.I_leak_rms=0.012f,.Temperature=25.0f,
+        .V_in_DC_Offset=1.65f,.V_out_DC_Offset=1.64f,.I_in_DC_Offset=1.63f,
+        .I_leak_DC_Offset=1.62f,.leakage_adc_rms=22.0f,
+        .I_leak_peak_max=0.050f,.I_leak_rms_max=0.034f,.fast_leakage_ready=1,
+        .leakage_over_count_max=7,
+        .temperature_adc_average=2048.0f,.startup_complete=1,
+        .adc_clipped_mask=ADC_CLIPPED_VAC_OUT,.leakage_trip_flag=1,.temperature_fault=0};
+    while (fgets(line,sizeof(line),stdin)) {
+        mock_output_length=0;
+        switch (line[0]) {
+        case 'x': Input(line+2); Com_MainFunction(); Drain();
+                  mock_usart.ISR|=USART_ISR_TC; Com_MainFunction(); break;
+        case 'q': Input(line+2); Com_MainFunction(); break;
+        case 'r': Input(line+2); break; /* ISR only */
+        case 'd': Drain(); Com_MainFunction(); break; /* TC deliberately clear */
+        case 't': mock_usart.ISR|=USART_ISR_TC; Com_MainFunction(); break;
+        case 'n': Com_MainFunction(); break;
+        case 'a': now_ms+=(uint32_t)strtoul(line+2,NULL,10); break;
+        case 'e': mock_usart.ISR|=USART_ISR_ORE|USART_ISR_RXNE; Irq();
+                  mock_usart.ISR&=~(USART_ISR_ORE|USART_ISR_FE|USART_ISR_NE|USART_ISR_PE);
+                  break;
+        case 'b': fake_busy=atoi(line+2); break;
+        case 'f': fake_fail_after=atoi(line+2); break;
+        case 's': printf("%u %u %u %u\n",fake_erases,fake_programs,resets,fake_service);
+                  fflush(stdout); continue;
+        default: assert(0);
+        }
+        if (mock_output_length) {
+            for (unsigned i=0;i<mock_output_length;i++) printf("%02x",mock_output[i]);
+        } else printf("-");
+        printf("\n"); fflush(stdout);
+    }
+    return 0;
+}

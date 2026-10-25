@@ -1,0 +1,17 @@
+/* A consumer that includes only Rte.h: no ADC/Measurement dependency. */
+#include "Rte.h"
+
+int RteTest_IsAdcClipped(AdcClippedMask_t mask)
+{
+    return (MeasureResult.adc_clipped_mask & mask) != ADC_CLIPPED_NONE;
+}
+
+float RteTest_LeakageAdcRms(void)
+{
+    return MeasureResult.leakage_adc_rms;
+}
+
+float RteTest_TemperatureAdcAverage(void)
+{
+    return MeasureResult.temperature_adc_average;
+}

@@ -1,0 +1,28 @@
+#ifndef PROTECTION_HOST_MAIN_H
+#define PROTECTION_HOST_MAIN_H
+#include <stdint.h>
+#define __WEAK __attribute__((weak))
+#define RELAY_LINE_CTRL_GPIO_Port 0U
+#define RELAY_NEUTRAL_CTRL_GPIO_Port 1U
+#define LED_STATUS_GPIO_Port 2U
+#define BUZZER_CTRL_GPIO_Port 3U
+#define RELAY_LINE_CTRL_Pin 1U
+#define RELAY_NEUTRAL_CTRL_Pin 1U
+#define LED_STATUS_Pin 1U
+#define BUZZER_CTRL_Pin 1U
+extern unsigned mock_pins[4], mock_primask, mock_systick_enabled;
+extern unsigned mock_trip_on_unmask;
+void Protection_FastLeakageISR(void);
+void Error_Handler(void);
+void mock_restore_primask(uint32_t value);
+static inline void LL_GPIO_SetOutputPin(unsigned port, unsigned pin)
+{ (void)pin; mock_pins[port] = 1U; }
+static inline void LL_GPIO_ResetOutputPin(unsigned port, unsigned pin)
+{ (void)pin; mock_pins[port] = 0U; }
+static inline void LL_GPIO_TogglePin(unsigned port, unsigned pin)
+{ (void)pin; mock_pins[port] ^= 1U; }
+static inline void LL_SYSTICK_EnableIT(void) { mock_systick_enabled = 1U; }
+static inline uint32_t __get_PRIMASK(void) { return mock_primask; }
+static inline void __disable_irq(void) { mock_primask = 1U; }
+static inline void __set_PRIMASK(uint32_t value) { mock_restore_primask(value); }
+#endif

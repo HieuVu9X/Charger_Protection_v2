@@ -1,0 +1,40 @@
+#ifndef MEASUREMENT_HOST_MAIN_H
+#define MEASUREMENT_HOST_MAIN_H
+#include <stdint.h>
+#define ADC1 1U
+#define DMA1 1U
+#define TIM1 1U
+#define LL_DMA_CHANNEL_1 1U
+#define LL_ADC_REG_DMA_TRANSFER_NONE 0U
+#define LL_ADC_REG_DMA_TRANSFER_UNLIMITED 1U
+#define LL_ADC_DMA_REG_REGULAR_DATA 0U
+#define LL_DMA_DIRECTION_PERIPH_TO_MEMORY 0U
+extern unsigned mock_ht, mock_tc, mock_te, mock_timer_running, mock_dma_running;
+void Error_Handler(void);
+static inline void LL_TIM_DisableCounter(unsigned timer) { (void)timer; mock_timer_running=0; }
+static inline void LL_TIM_EnableCounter(unsigned timer) { (void)timer; mock_timer_running=1; }
+static inline void LL_DMA_DisableChannel(unsigned dma, unsigned ch) { (void)dma; (void)ch; mock_dma_running=0; }
+static inline void LL_DMA_EnableChannel(unsigned dma, unsigned ch) { (void)dma; (void)ch; mock_dma_running=1; }
+static inline void LL_DMA_ClearFlag_HT1(unsigned dma) { (void)dma; mock_ht=0; }
+static inline void LL_DMA_ClearFlag_TC1(unsigned dma) { (void)dma; mock_tc=0; }
+static inline void LL_DMA_ClearFlag_TE1(unsigned dma) { (void)dma; mock_te=0; }
+static inline unsigned LL_DMA_IsActiveFlag_HT1(unsigned dma) { (void)dma; return mock_ht; }
+static inline unsigned LL_DMA_IsActiveFlag_TC1(unsigned dma) { (void)dma; return mock_tc; }
+static inline unsigned LL_DMA_IsActiveFlag_TE1(unsigned dma) { (void)dma; return mock_te; }
+static inline unsigned LL_ADC_IsCalibrationOnGoing(unsigned adc) { (void)adc; return 0; }
+static inline unsigned LL_ADC_IsActiveFlag_ADRDY(unsigned adc) { (void)adc; return 1; }
+static inline uint32_t LL_ADC_DMA_GetRegAddr(unsigned adc, unsigned reg) { (void)adc; (void)reg; return 0; }
+static inline void LL_ADC_REG_SetDMATransfer(unsigned a, unsigned b) { (void)a; (void)b; }
+static inline void LL_ADC_StartCalibration(unsigned a) { (void)a; }
+static inline void LL_mDelay(unsigned a) { (void)a; }
+static inline void LL_DMA_ConfigAddresses(unsigned a, unsigned b, uint32_t c, uint32_t d, unsigned e) { (void)a; (void)b; (void)c; (void)d; (void)e; }
+static inline void LL_DMA_SetDataLength(unsigned a, unsigned b, unsigned c) { (void)a; (void)b; (void)c; }
+static inline void LL_DMA_EnableIT_HT(unsigned a, unsigned b) { (void)a; (void)b; }
+static inline void LL_DMA_EnableIT_TC(unsigned a, unsigned b) { (void)a; (void)b; }
+static inline void LL_DMA_EnableIT_TE(unsigned a, unsigned b) { (void)a; (void)b; }
+static inline void LL_ADC_ClearFlag_ADRDY(unsigned a) { (void)a; }
+static inline void LL_ADC_Enable(unsigned a) { (void)a; }
+static inline void LL_TIM_SetCounter(unsigned a, unsigned b) { (void)a; (void)b; }
+static inline void LL_TIM_ClearFlag_UPDATE(unsigned a) { (void)a; }
+static inline void LL_ADC_REG_StartConversion(unsigned a) { (void)a; }
+#endif
