@@ -13,7 +13,7 @@
 ../Core/Rte/Rte.c:21:6:Rte_Read_MeasureResult	1
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h:225:22:LL_AHB1_GRP1_EnableClock	1
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h:663:22:LL_APB1_GRP2_EnableClock	1
-../Core/Src/main.c:193:6:Error_Handler	2
+../Core/Src/main.c:183:6:Error_Handler	2
 ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_rcc.c:489:10:RCC_GetSystemClockFreq	2
 ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_gpio.c:172:13:LL_GPIO_Init.isra	6
 ../Core/Calib/Calib.c:101:16:ReadRecord	7

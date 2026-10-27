@@ -27,27 +27,27 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000028  00000000  00000000  00005050  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000d1b2  00000000  00000000  00005078  2**0
+ 12 .debug_info   0000d19f  00000000  00000000  00005078  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 000025d0  00000000  00000000  0001222a  2**0
+ 13 .debug_abbrev 000025e1  00000000  00000000  00012217  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_loclists 00002427  00000000  00000000  000147fa  2**0
+ 14 .debug_loclists 00002427  00000000  00000000  000147f8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 00000050  00000000  00000000  00016c28  2**3
+ 15 .debug_aranges 00000050  00000000  00000000  00016c20  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_rnglists 000007b0  00000000  00000000  00016c78  2**0
+ 16 .debug_rnglists 000007b0  00000000  00000000  00016c70  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00004e83  00000000  00000000  00017428  2**0
+ 17 .debug_line   00004e7f  00000000  00000000  00017420  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00043e43  00000000  00000000  0001c2ab  2**0
+ 18 .debug_str    00043e53  00000000  00000000  0001c29f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000600ee  2**0
+ 19 .comment      00000043  00000000  00000000  000600f2  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000640  00000000  00000000  00060134  2**2
+ 20 .debug_frame  00000640  00000000  00000000  00060138  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_macro  0000c2c6  00000000  00000000  00060774  2**0
+ 21 .debug_macro  0000c2c6  00000000  00000000  00060778  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 00000b2c  00000000  00000000  0006ca3a  2**0
+ 22 .debug_line_str 00000b2c  00000000  00000000  0006ca3e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -7781,13 +7781,13 @@ __STATIC_INLINE void LL_SYSTICK_EnableIT(void)
 void Com_MainFunction(void)
 {
     if (!TxIdle()) return;
-    if (reset_pending) { Rte_Call_Application_Reset(); return; }
+    if (reset_pending) { Application_Reset(); return; }
  80030ec:	3364      	adds	r3, #100	@ 0x64
  80030ee:	781a      	ldrb	r2, [r3, #0]
  80030f0:	2a00      	cmp	r2, #0
  80030f2:	d100      	bne.n	80030f6 <main+0xeca>
  80030f4:	e0b3      	b.n	800325e <main+0x1032>
-  Protection_EnterCalibMode();
+    RTE_Call_Protection_EnterCalibMode();
  80030f6:	f7fd fa1d 	bl	8000534 <Protection_EnterCalibMode>
   __ASM volatile ("dsb 0xF":::"memory");
  80030fa:	f3bf 8f4f 	dsb	sy

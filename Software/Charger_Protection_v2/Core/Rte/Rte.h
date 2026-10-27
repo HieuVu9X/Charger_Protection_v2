@@ -18,7 +18,6 @@
 #include "Scheduler.h"
 /* Application provider, declared here so component clients use only RTE. */
 void Error_Handler(void);
-void Application_Reset(void);
 /*--------------------------------------------------------------------------------
  *                               Macro Definitions
  -------------------------------------------------------------------------------*/
@@ -39,7 +38,7 @@ void Application_Reset(void);
 #define Rte_Call_Calib_RestoreProtectionDefaults() Calib_RestoreProtectionDefaults()
 /* Measurement -> application fatal acquisition-error path. */
 #define Rte_Call_Application_ErrorHandler()      Error_Handler()
-#define Rte_Call_Application_Reset()             Application_Reset()
+#define RTE_Call_Protection_EnterCalibMode()      Protection_EnterCalibMode()
 #define Rte_Call_Calib_Save(params)              Calib_Save(params)
 #define Rte_Call_Calib_ReadStored(params)        Calib_ReadStored(params)
 #define Rte_Call_Calib_GetInfo(info)              Calib_GetInfo(info)

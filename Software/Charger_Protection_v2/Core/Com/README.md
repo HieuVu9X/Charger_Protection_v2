@@ -7,10 +7,10 @@ Luồng chạy:
 ```text
 PC ↔ USART1 IRQ ↔ com buffer/parser (task 10 ms)
                            ↕ RTE
-              Calib / snapshot Measurement / Protection / reset
+              Calib / snapshot Measurement / Protection
 ```
 
-IRQ USART ưu tiên 0, DMA ADC ưu tiên 1, SysTick ưu tiên 3. UART không có FIFO RX; một byte ở 115200 8N1 mất khoảng 86.8 µs. Cho IRQ chuyển byte ngắn ngắt được xử lý ADC theo lô để tránh chờ cả lô ADC mới đọc RDR. IRQ chỉ chuyển byte và ghi nhận lỗi; không chờ TX hoặc tính float. Lệnh được xử lý ở main loop qua `Scheduler_Task10ms`. Mỗi lần xử lý tối đa một lệnh; chờ TX hoàn tất trước khi lấy lệnh tiếp theo. Các lời gọi sang Calib, Rte snapshot, Protection và application reset đều đi qua RTE. Thời gian parser lấy từ bộ đếm SysTick của Scheduler; không thêm xử lý giao thức vào ISR 1 ms. Vẫn cần đo thời gian ISR và kiểm tra UART cùng ADC trên board.
+IRQ USART ưu tiên 0, DMA ADC ưu tiên 1, SysTick ưu tiên 3. UART không có FIFO RX; một byte ở 115200 8N1 mất khoảng 86.8 µs. Cho IRQ chuyển byte ngắn ngắt được xử lý ADC theo lô để tránh chờ cả lô ADC mới đọc RDR. IRQ chỉ chuyển byte và ghi nhận lỗi; không chờ TX hoặc tính float. Lệnh được xử lý ở main loop qua `Scheduler_Task10ms`. Mỗi lần xử lý tối đa một lệnh; chờ TX hoàn tất trước khi lấy lệnh tiếp theo. Các lời gọi sang Calib, Rte snapshot và Protection đều đi qua RTE. `Application_Reset()` nằm trong `com.c`, được gọi trực tiếp sau khi ACK đã truyền xong (TC), gọi `RTE_Call_Protection_EnterCalibMode()` rồi `NVIC_SystemReset()`. Thời gian parser lấy từ bộ đếm SysTick của Scheduler; không thêm xử lý giao thức vào ISR 1 ms. Vẫn cần đo thời gian ISR và kiểm tra UART cùng ADC trên board.
 
 ## Frame
 

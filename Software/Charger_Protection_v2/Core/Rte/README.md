@@ -17,7 +17,7 @@ Scheduler cộng tác đơn giản trong `Scheduler.h` và `scheduler.c`, dùng 
 | Task | Chu kỳ yêu cầu | Hàm mặc định |
 |---|---|---|
 | `Scheduler_Task1ms()` | 1 ms | `Measurement_MainFunction()` rồi `Protection_MainFunction()` |
-| `Scheduler_Task10ms()` | 10 ms | Ứng dụng override trong main.c → `Rte_Call_Com_MainFunction()` |
+| `Scheduler_Task10ms()` | 10 ms | `Rte_Call_Com_MainFunction()` trong `scheduler.c` |
 | `Scheduler_Task100ms()` | 100 ms | Để trống để thêm component |
 
 Các task nằm cuối `scheduler.c`. Thêm lời gọi `MainFunction` trực tiếp vào task phù hợp. Các hàm task mặc định khai báo `__WEAK`, cũng có thể định nghĩa lại trong source ứng dụng nếu muốn giữ scheduler riêng. Callback giữa component vẫn đi qua RTE.
@@ -45,7 +45,9 @@ Measurement không include Calib.h hay gọi trực tiếp Calib_Get()/Error_Han
 
 com dùng `Rte_Call_Calib_Get/GetInfo/ReadStored/Save/RestoreDefaults`,
 `Rte_Call_Protection_GetFaultMask`, `Rte_Call_Scheduler_GetTimeMs` và
-`Rte_Call_Application_Reset`. Dữ liệu đo lấy bằng `Rte_Read_MeasureResult` tại
+`RTE_Call_Protection_EnterCalibMode`. `Application_Reset()` nằm trong `com.c`,
+được gọi trực tiếp sau khi ACK đã truyền xong, gọi port Protection rồi
+`NVIC_SystemReset()`. Dữ liệu đo lấy bằng `Rte_Read_MeasureResult` tại
 main loop. Bộ đếm `Scheduler_GetTimeMs()` là uint32 tăng mỗi SysTick; parser
-so sánh hiệu unsigned để xử lý wrap. Task 10 ms được override ở USER CODE
-trong main.c; scheduler độc lập vẫn giữ default task rỗng.
+so sánh hiệu unsigned để xử lý wrap. Task 10 ms được triển khai trong
+`scheduler.c` và gọi `Rte_Call_Com_MainFunction()`.

@@ -23,7 +23,7 @@ uint32_t Scheduler_GetTimeMs(void);
 /* Default task bodies are weak: edit them in scheduler.c, or override them in
  * an application source file. Task MainFunctions are called directly; keep
  * Measurement before Protection in task 1ms. Component callbacks use RTE.
- * Tasks 10ms/100ms are extension points with empty default implementations. */
+ * Task 10ms runs Com through RTE; task 100ms is empty by default. */
 void Scheduler_Task1ms(void);
 void Scheduler_Task10ms(void);
 void Scheduler_Task100ms(void);

@@ -173,17 +173,7 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void Scheduler_Task10ms(void)
-{
-  Rte_Call_Com_MainFunction();
-}
 
-void Application_Reset(void)
-{
-  /* Com calls only after the ACK has left the UART shift register (TC). */
-  Protection_EnterCalibMode();
-  NVIC_SystemReset();
-}
 /* USER CODE END 4 */
 
 /**

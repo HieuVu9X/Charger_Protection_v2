@@ -73,7 +73,7 @@ __WEAK void Scheduler_Task1ms(void)
 
 __WEAK void Scheduler_Task10ms(void)
 {
-    /* Add component MainFunction calls with a 10 ms period here. */
+    Rte_Call_Com_MainFunction();
 }
 
 __WEAK void Scheduler_Task100ms(void)

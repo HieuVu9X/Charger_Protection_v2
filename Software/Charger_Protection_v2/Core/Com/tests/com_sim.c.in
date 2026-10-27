@@ -13,11 +13,19 @@ uint8_t mock_output[80];
 unsigned mock_output_length;
 static uint32_t now_ms;
 static unsigned resets;
+static unsigned reset_prepared;
 
 uint32_t Scheduler_GetTimeMs(void) { assert(!mock_in_isr); return now_ms; }
 uint32_t Protection_GetFaultMask(void) { assert(!mock_in_isr); return 0x41U; }
-void Application_Reset(void) {
+void Protection_EnterCalibMode(void) {
     assert(!mock_in_isr && !mock_irq && LL_USART_IsActiveFlag_TC(USART1));
+    assert(!reset_prepared);
+    reset_prepared=1U;
+}
+void NVIC_SystemReset(void) {
+    assert(!mock_in_isr && !mock_irq && LL_USART_IsActiveFlag_TC(USART1));
+    assert(reset_prepared);
+    reset_prepared=0U;
     resets++; Calib_Init(); Com_Init();
 }
 static void Irq(void) {

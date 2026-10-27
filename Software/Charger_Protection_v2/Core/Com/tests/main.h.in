@@ -7,6 +7,7 @@ extern MockUsart mock_usart;
 extern int mock_txe, mock_irq, mock_in_isr;
 extern uint8_t mock_output[80];
 extern unsigned mock_output_length;
+void NVIC_SystemReset(void);
 #define USART1 (&mock_usart)
 #define USART1_IRQn 1
 #define USART_ISR_RXNE (1U<<0)

@@ -207,10 +207,17 @@ void Com_UART_IRQHandler(void)
     }
 }
 
+static void Application_Reset(void)
+{
+    /* Called only after the ACK has left the UART shift register (TC). */
+    RTE_Call_Protection_EnterCalibMode();
+    NVIC_SystemReset();
+}
+
 void Com_MainFunction(void)
 {
     if (!TxIdle()) return;
-    if (reset_pending) { Rte_Call_Application_Reset(); return; }
+    if (reset_pending) { Application_Reset(); return; }
     uint32_t now=Rte_Call_Scheduler_GetTimeMs();
     if (received && (uint32_t)(now-last_byte_ms)>=FRAME_TIMEOUT_MS) received=0U;
     /* Serialize fault recovery with the ISR; never parse across a lost byte. */
